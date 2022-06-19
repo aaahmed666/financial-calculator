@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="calculator_widget">
+      <div class="top">
+        <h2>Calculate your Rewards</h2>
+
+        <form action="#">
+          <div class="group">
+            <label for="vendor">Vendor/Bills</label>
+            <input
+              type="text"
+              value=""
+              id="vendor"
+              name="vendor"
+              placeholder="Enter a Number"
+            />
+          </div>
+
+          <div class="group">
+            <label for="Media">Media/Ad</label>
+            <input
+              type="text"
+              value=""
+              id="Media"
+              name="Media"
+              placeholder="Enter a Number"
+            />
+          </div>
+
+          <div class="group">
+            <label for="Corporation">Corporation spend</label>
+            <input
+              type="text"
+              value=""
+              id="Corporation"
+              name="Corporation"
+              placeholder="Enter a Number"
+            />
+          </div>
+
+          <div class="group">
+            <label for="Team project">Team project</label>
+            <input
+              type="text"
+              value=""
+              id="TeamProject"
+              name="Team project"
+              placeholder="Enter a Number"
+            />
+          </div>
+        </form>
+      </div>
+
+      <div class="resualts">
+        <h2>Compare your Rewards</h2>
+        <div class="controls">
+          <button class="Brex">Brex</button>
+          <button class="Stripe">Stripe</button>
+          <button class="Amex">Amex</button>
+        </div>
+        <div class="resualt">
+          <div class="final_resualt">
+            <h3>final resualt</h3>
+            <div id="FinalValue" class="value">123</div>
+          </div>
+          <div class="unlimited_rewards">
+            <h3>unlimited rewards</h3>
+            <div id="UnlimitedValue" class="value">123</div>
+          </div>
+          <div class="lifetime_rewards">
+            <h3>lifetime rewards</h3>
+            <div id="LifeValue" class="value">123</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
