@@ -1,3 +1,130 @@
 body {
   background-color: #f5f5f5;
 }
+
+.calculator_widget {
+  display: grid;
+  place-items: center;
+}
+
+.main_title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: rgb(35, 35, 204);
+}
+
+.group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.group label {
+  font-size: 18px;
+  color: #78868e;
+  margin-inline-end: 15px;
+}
+
+.group input {
+  width: 200px;
+  height: 30px;
+  border: 1px solid #78868e;
+  border-radius: 5px;
+  padding-left: 5px;
+  font-size: 18px;
+  color: #78868e;
+  text-align: center;
+}
+
+.group input:focus {
+  outline: none;
+  border: 2px solid rgb(35, 35, 204);
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.controls button {
+  width: 90px;
+  height: 30px;
+  border: 1px solid #78868e;
+  border-radius: 5px;
+  color: #78868e;
+  background-color: white;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0px 3px 7px #78868e;
+}
+
+.controls button:hover {
+  background-color: rgb(35, 35, 204);
+  color: white;
+}
+
+.resualts {
+  margin-bottom: 30px;
+}
+
+.resualt {
+  display: flex;
+  justify-content: space-between;
+}
+
+.image {
+  width: 300px;
+  height: 300px;
+}
+
+.image img {
+  width: 100%;
+  max-width: 100%;
+}
+
+.rewards {
+  margin-inline-start: 25px;
+}
+
+.rewards > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reward_title {
+  font-size: 25px;
+  color: #000;
+  margin: 0;
+}
+
+.rewards .value {
+  font-size: 18px;
+  color: #78868e;
+  margin-inline-start: 10px;
+}
+
+.final_resualt span {
+  width: 90px;
+  height: 20px;
+  background-color: rgb(71, 71, 118);
+  border-radius: 8px;
+}
+
+.unlimited_rewards span {
+  width: 120px;
+  height: 20px;
+  background-color: rgb(51, 51, 119);
+  border-radius: 8px;
+}
+
+.lifetime_rewards span {
+  width: 150px;
+  height: 20px;
+  background-color: rgb(28, 28, 116);
+  border-radius: 8px;
+}
