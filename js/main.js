@@ -13,34 +13,32 @@ const LifeTimeRewardValue = document.getElementById("LifeValue");
 
 const FinalTitleChange = document.getElementById("FinalTitle");
 
-// let VendorAmount = parseFloat(VendorInput.value);
-// let MediaAmount = parseFloat(MediaInput.value);
-// let CorporationAmount = parseFloat(CorporationInput.value);
-// let TeamProjectAmount = parseFloat(TeamProjectInput.value);
-
-// let sum = VendorAmount + MediaAmount + CorporationAmount + TeamProjectAmount;
-
 const BrexCalc = () => {
+  let sum = calcSum();
   let BrexAmount = sum * 0.3;
   return BrexAmount;
 };
 
 const StripeCalc = () => {
+  let sum = calcSum();
   let StripeAmount = sum * 2.9;
   return StripeAmount;
 };
 
 const AmexCalc = () => {
+  let sum = calcSum();
   let AmexAmount = sum * 1.3;
   return AmexAmount;
 };
 
 const UnlimitedValueCalc = () => {
+  let sum = calcSum();
   let UnlimitedValue = sum * 1.1;
   return UnlimitedValue;
 };
 
 const LifeTimeValueCalc = () => {
+  let sum = calcSum();
   let LifeTimeValue = sum * 1.2;
   return LifeTimeValue;
 };
@@ -68,56 +66,75 @@ const updateTimeLife = (LifeTimeValue) => {
   LifeTimeRewardValue.innerHTML = "$ " + Math.round(LifeTimeValue);
 };
 
-const refreshInputValues = () => {
-  VendorAmount = parseFloat(VendorInput.value);
-  MediaAmount = parseFloat(MediaInput.value);
-  CorporationAmount = parseFloat(CorporationInput.value);
-  TeamProjectAmount = parseFloat(TeamProjectInput.value);
-
-  sum = VendorAmount + MediaAmount + CorporationAmount + TeamProjectAmount;
+const validateInput = (value) => {
+  if (value === "" || isNaN(value) || value < 0) {
+    return 0;
+  } else {
+    return value;
+  }
 };
 
-const checkInputValues = () => {
+const calcSum = () => {
+  VendorAmount = validateInput(VendorInput.value);
+  MediaAmount = validateInput(MediaInput.value);
+  CorporationAmount = validateInput(CorporationInput.value);
+  TeamProjectAmount = validateInput(TeamProjectInput.value);
+
+  sum = VendorAmount + MediaAmount + CorporationAmount + TeamProjectAmount;
+  return sum;
+};
+
+const checkEmptyInput = () => {
   if (
     VendorInput.value === "" &&
     MediaInput.value === "" &&
     CorporationInput.value === "" &&
     TeamProjectInput.value === ""
   ) {
-    alert("Please fill all the fields");
+    return false;
+  } else {
+    return true;
   }
 };
 
-const unlimitLifeValue = () => {
+const checkEmptyRewards = () => {
   if (
     VendorInput.value === "" ||
     MediaInput.value === "" ||
     CorporationInput.value === "" ||
     TeamProjectInput.value === ""
   ) {
-    return;
+    return false;
+  } else {
+    return true;
   }
 };
 
 const initBrex = () => {
-  refreshInputValues();
-  let BrexAmount = BrexCalc();
-  updateBrex(BrexAmount);
-  checkInputValues();
+  if (checkEmptyInput()) {
+    let BrexAmount = BrexCalc();
+    updateBrex(BrexAmount);
+  } else {
+    alert("Please fill all the fields");
+  }
 };
 
 const initStripe = () => {
-  refreshInputValues();
-  let StripeAmount = StripeCalc();
-  updateStripe(StripeAmount);
-  checkInputValues();
+  if (checkEmptyInput()) {
+    let StripeAmount = StripeCalc();
+    updateStripe(StripeAmount);
+  } else {
+    alert("Please fill all the fields");
+  }
 };
 
 const initAmex = () => {
-  refreshInputValues();
-  let AmexAmount = AmexCalc();
-  updateAmex(AmexAmount);
-  checkInputValues();
+  if (checkEmptyInput()) {
+    let AmexAmount = AmexCalc();
+    updateAmex(AmexAmount);
+  } else {
+    alert("Please fill all the fields");
+  }
 };
 
 BrexCalcBtn.addEventListener("click", initBrex);
@@ -125,19 +142,24 @@ StripeCalcBtn.addEventListener("click", initStripe);
 AmexCalcBtn.addEventListener("click", initAmex);
 
 const initUnlimitedReward = () => {
-  unlimitLifeValue();
-  refreshInputValues();
   let UnlimitedValue = UnlimitedValueCalc();
   updateUnlimited(UnlimitedValue);
 };
 
-initUnlimitedReward();
-
 const initLifeTimeValue = () => {
-  unlimitLifeValue();
-  refreshInputValues();
   let LifeTimeValue = LifeTimeValueCalc();
   updateTimeLife(LifeTimeValue);
 };
 
-initLifeTimeValue();
+const calcRewards = () => {
+  if (checkEmptyRewards()) {
+    initUnlimitedReward();
+    initLifeTimeValue();
+  }
+};
+
+document.querySelectorAll(".input").forEach((el) => {
+  el.addEventListener("change", () => {
+    calcRewards();
+  });
+});
