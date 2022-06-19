@@ -13,22 +13,16 @@ const LifeTimeRewardValue = document.getElementById("LifeValue");
 
 const FinalTitleChange = document.getElementById("FinalTitle");
 
-const BrexCalc = () => {
-  let sum = calcSum();
-  let BrexAmount = sum * 0.3;
-  return BrexAmount;
+brandValues = {
+  Brex: 0.3,
+  Stripe: 2.9,
+  Amex: 1.3,
 };
 
-const StripeCalc = () => {
+const brandCalc = (brand) => {
   let sum = calcSum();
-  let StripeAmount = sum * 2.9;
-  return StripeAmount;
-};
-
-const AmexCalc = () => {
-  let sum = calcSum();
-  let AmexAmount = sum * 1.3;
-  return AmexAmount;
+  let brandAmount = sum * brandValues[brand];
+  return brandAmount;
 };
 
 const UnlimitedValueCalc = () => {
@@ -41,21 +35,6 @@ const LifeTimeValueCalc = () => {
   let sum = calcSum();
   let LifeTimeValue = sum * 1.2;
   return LifeTimeValue;
-};
-
-const updateBrex = (BrexAmount) => {
-  FinalTitleChange.innerHTML = "BREX Bussiness Card";
-  FinalResualtValue.innerHTML = "$ " + Math.round(BrexAmount);
-};
-
-const updateStripe = (StripeAmount) => {
-  FinalTitleChange.innerHTML = "Stripe Business Card";
-  FinalResualtValue.innerHTML = "$ " + Math.round(StripeAmount);
-};
-
-const updateAmex = (AmexAmount) => {
-  FinalTitleChange.innerHTML = "Amex Business Card";
-  FinalResualtValue.innerHTML = "$ " + Math.round(AmexAmount);
 };
 
 const updateUnlimited = (UnlimitedValue) => {
@@ -110,36 +89,23 @@ const checkEmptyRewards = () => {
   }
 };
 
-const initBrex = () => {
+const updateBrand = (BrandAmount, BrandName) => {
+  FinalTitleChange.innerHTML = BrandName + " Bussiness Card";
+  FinalResualtValue.innerHTML = "$ " + Math.round(BrandAmount);
+};
+
+const init = (BrandName) => {
   if (checkEmptyInput()) {
-    let BrexAmount = BrexCalc();
-    updateBrex(BrexAmount);
+    const BrandAmount = brandCalc(BrandName);
+    updateBrand(BrandAmount, BrandName);
   } else {
     alert("Please fill all the fields");
   }
 };
 
-const initStripe = () => {
-  if (checkEmptyInput()) {
-    let StripeAmount = StripeCalc();
-    updateStripe(StripeAmount);
-  } else {
-    alert("Please fill all the fields");
-  }
-};
-
-const initAmex = () => {
-  if (checkEmptyInput()) {
-    let AmexAmount = AmexCalc();
-    updateAmex(AmexAmount);
-  } else {
-    alert("Please fill all the fields");
-  }
-};
-
-BrexCalcBtn.addEventListener("click", initBrex);
-StripeCalcBtn.addEventListener("click", initStripe);
-AmexCalcBtn.addEventListener("click", initAmex);
+BrexCalcBtn.addEventListener("click", () => init("Brex"));
+StripeCalcBtn.addEventListener("click", () => init("Stripe"));
+AmexCalcBtn.addEventListener("click", () => init("Amex"));
 
 const initUnlimitedReward = () => {
   let UnlimitedValue = UnlimitedValueCalc();
