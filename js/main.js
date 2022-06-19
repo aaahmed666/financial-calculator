@@ -79,12 +79,12 @@ const refreshInputValues = () => {
 
 const checkInputValues = () => {
   if (
-    VendorInput.value === 0 ||
-    MediaInput.value === 0 ||
-    CorporationInput.value === 0 ||
-    TeamProjectInput.value === 0
+    VendorInput.value === "" &&
+    MediaInput.value === "" &&
+    CorporationInput.value === "" &&
+    TeamProjectInput.value === ""
   ) {
-    return;
+    alert("Please fill all the fields");
   }
 };
 
