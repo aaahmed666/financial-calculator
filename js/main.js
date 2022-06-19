@@ -11,6 +11,8 @@ const FinalResualtValue = document.getElementById("FinalValue");
 const UnlimitedRewardValue = document.getElementById("UnlimitedValue");
 const LifeTimeRewardValue = document.getElementById("LifeValue");
 
+const FinalTitleChange = document.getElementById("FinalTitle");
+
 let VendorAmount = parseFloat(VendorInput.value);
 let MediaAmount = parseFloat(MediaInput.value);
 let CorporationAmount = parseFloat(CorporationInput.value);
@@ -44,14 +46,17 @@ const LifeTimeValueCalc = () => {
 };
 
 const updateBrex = (BrexAmount) => {
+  FinalTitleChange.innerHTML = "BREX Bussiness Card";
   FinalResualtValue.innerHTML = Math.round(BrexAmount);
 };
 
 const updateStripe = (StripeAmount) => {
+  FinalTitleChange.innerHTML = "Stripe Business Card";
   FinalResualtValue.innerHTML = Math.round(StripeAmount);
 };
 
 const updateAmex = (AmexAmount) => {
+  FinalTitleChange.innerHTML = "Amex Business Card";
   FinalResualtValue.innerHTML = Math.round(AmexAmount);
 };
 
