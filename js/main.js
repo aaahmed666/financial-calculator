@@ -125,6 +125,7 @@ StripeCalcBtn.addEventListener("click", initStripe);
 AmexCalcBtn.addEventListener("click", initAmex);
 
 const initUnlimitedReward = () => {
+  unlimitLifeValue();
   refreshInputValues();
   let UnlimitedValue = UnlimitedValueCalc();
   updateUnlimited(UnlimitedValue);
@@ -133,6 +134,7 @@ const initUnlimitedReward = () => {
 initUnlimitedReward();
 
 const initLifeTimeValue = () => {
+  unlimitLifeValue();
   refreshInputValues();
   let LifeTimeValue = LifeTimeValueCalc();
   updateTimeLife(LifeTimeValue);
