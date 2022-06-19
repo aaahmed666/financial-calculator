@@ -13,12 +13,12 @@ const LifeTimeRewardValue = document.getElementById("LifeValue");
 
 const FinalTitleChange = document.getElementById("FinalTitle");
 
-let VendorAmount = parseFloat(VendorInput.value);
-let MediaAmount = parseFloat(MediaInput.value);
-let CorporationAmount = parseFloat(CorporationInput.value);
-let TeamProjectAmount = parseFloat(TeamProjectInput.value);
+// let VendorAmount = parseFloat(VendorInput.value);
+// let MediaAmount = parseFloat(MediaInput.value);
+// let CorporationAmount = parseFloat(CorporationInput.value);
+// let TeamProjectAmount = parseFloat(TeamProjectInput.value);
 
-let sum = VendorAmount + MediaAmount + CorporationAmount + TeamProjectAmount;
+// let sum = VendorAmount + MediaAmount + CorporationAmount + TeamProjectAmount;
 
 const BrexCalc = () => {
   let BrexAmount = sum * 0.3;
@@ -47,25 +47,25 @@ const LifeTimeValueCalc = () => {
 
 const updateBrex = (BrexAmount) => {
   FinalTitleChange.innerHTML = "BREX Bussiness Card";
-  FinalResualtValue.innerHTML = Math.round(BrexAmount);
+  FinalResualtValue.innerHTML = "$ " + Math.round(BrexAmount);
 };
 
 const updateStripe = (StripeAmount) => {
   FinalTitleChange.innerHTML = "Stripe Business Card";
-  FinalResualtValue.innerHTML = Math.round(StripeAmount);
+  FinalResualtValue.innerHTML = "$ " + Math.round(StripeAmount);
 };
 
 const updateAmex = (AmexAmount) => {
   FinalTitleChange.innerHTML = "Amex Business Card";
-  FinalResualtValue.innerHTML = Math.round(AmexAmount);
+  FinalResualtValue.innerHTML = "$ " + Math.round(AmexAmount);
 };
 
 const updateUnlimited = (UnlimitedValue) => {
-  UnlimitedRewardValue.innerHTML = Math.round(UnlimitedValue);
+  UnlimitedRewardValue.innerHTML = "$ " + Math.round(UnlimitedValue);
 };
 
 const updateTimeLife = (LifeTimeValue) => {
-  LifeTimeRewardValue.innerHTML = Math.round(LifeTimeValue);
+  LifeTimeRewardValue.innerHTML = "$ " + Math.round(LifeTimeValue);
 };
 
 const refreshInputValues = () => {
@@ -88,39 +88,44 @@ const checkInputValues = () => {
   }
 };
 
+const unlimitLifeValue = () => {
+  if (
+    VendorInput.value === "" ||
+    MediaInput.value === "" ||
+    CorporationInput.value === "" ||
+    TeamProjectInput.value === ""
+  ) {
+    return;
+  }
+};
+
 const initBrex = () => {
-  checkInputValues();
   refreshInputValues();
   let BrexAmount = BrexCalc();
   updateBrex(BrexAmount);
+  checkInputValues();
 };
 
-initBrex();
-
 const initStripe = () => {
-  checkInputValues();
   refreshInputValues();
   let StripeAmount = StripeCalc();
   updateStripe(StripeAmount);
+  checkInputValues();
 };
 
-initStripe();
-
 const initAmex = () => {
-  checkInputValues();
   refreshInputValues();
   let AmexAmount = AmexCalc();
   updateAmex(AmexAmount);
+  checkInputValues();
 };
-
-initAmex();
 
 BrexCalcBtn.addEventListener("click", initBrex);
 StripeCalcBtn.addEventListener("click", initStripe);
 AmexCalcBtn.addEventListener("click", initAmex);
 
 const initUnlimitedReward = () => {
-  checkInputValues();
+  refreshInputValues();
   let UnlimitedValue = UnlimitedValueCalc();
   updateUnlimited(UnlimitedValue);
 };
@@ -128,7 +133,7 @@ const initUnlimitedReward = () => {
 initUnlimitedReward();
 
 const initLifeTimeValue = () => {
-  checkInputValues();
+  refreshInputValues();
   let LifeTimeValue = LifeTimeValueCalc();
   updateTimeLife(LifeTimeValue);
 };
