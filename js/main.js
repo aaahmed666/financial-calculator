@@ -89,6 +89,7 @@ const checkInputValues = () => {
 };
 
 const initBrex = () => {
+  checkInputValues();
   refreshInputValues();
   let BrexAmount = BrexCalc();
   updateBrex(BrexAmount);
@@ -97,6 +98,7 @@ const initBrex = () => {
 initBrex();
 
 const initStripe = () => {
+  checkInputValues();
   refreshInputValues();
   let StripeAmount = StripeCalc();
   updateStripe(StripeAmount);
@@ -105,6 +107,7 @@ const initStripe = () => {
 initStripe();
 
 const initAmex = () => {
+  checkInputValues();
   refreshInputValues();
   let AmexAmount = AmexCalc();
   updateAmex(AmexAmount);
@@ -117,6 +120,7 @@ StripeCalcBtn.addEventListener("click", initStripe);
 AmexCalcBtn.addEventListener("click", initAmex);
 
 const initUnlimitedReward = () => {
+  checkInputValues();
   let UnlimitedValue = UnlimitedValueCalc();
   updateUnlimited(UnlimitedValue);
 };
@@ -124,6 +128,7 @@ const initUnlimitedReward = () => {
 initUnlimitedReward();
 
 const initLifeTimeValue = () => {
+  checkInputValues();
   let LifeTimeValue = LifeTimeValueCalc();
   updateTimeLife(LifeTimeValue);
 };
